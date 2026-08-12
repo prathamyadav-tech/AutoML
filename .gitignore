@@ -1,0 +1,6 @@
+automl-env/
+__pycache__/
+*.pyc
+*.log
+.vscode/
+.env

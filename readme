@@ -1,0 +1,90 @@
+# AutoML Web App
+
+A beginner-friendly AutoML tool. Upload a CSV, and the app automatically cleans your data, detects whether it's a classification or regression problem, trains and compares multiple machine learning models, and lets you test predictions on new inputs — no ML knowledge required.
+
+## What it does
+
+1. **Upload** — drag in any CSV file
+2. **Preview** — instantly see column types, missing values, and basic stats
+3. **Pick a target** — choose the column you want to predict
+4. **Auto-detect problem type** — the app figures out if it's classification (predicting a category) or regression (predicting a number)
+5. **Clean & train** — missing values and encoding are handled automatically, then multiple models (Linear Regression, KNN, Decision Tree, Random Forest, Gradient Boosting, and more) are trained and ranked
+6. **Predict** — enter new values through a simple form and get a live prediction from the best-performing model
+
+## Why this exists
+
+Tools like PyCaret and H2O.ai already do automated machine learning, but they require writing code. This app wraps that power in a simple upload-and-click interface — built for two audiences:
+
+- **Hackathons** — a working, demoable ML tool in minutes
+- **Small businesses** — a shop owner can upload sales data and get predictions without knowing what a decision tree is
+
+## Tech stack
+
+| Tool | Purpose |
+|---|---|
+| Python | Core language |
+| pandas | Data reading and cleaning |
+| scikit-learn | Underlying ML algorithms |
+| PyCaret | Automated model training and comparison |
+| Streamlit | Web interface |
+| Streamlit Community Cloud | Free deployment |
+
+## Running it locally
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/your-username/automl-app.git
+cd automl-app
+```
+
+**2. Create and activate a virtual environment (Python 3.10 recommended)**
+```bash
+python -m venv automl-env
+# Windows
+automl-env\Scripts\activate
+# Mac/Linux
+source automl-env/bin/activate
+```
+
+**3. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Run the app**
+```bash
+streamlit run app.py
+```
+
+The app will open in your browser at `http://localhost:8501`.
+
+## How to use it
+
+1. Upload a CSV file (e.g. a sales record, a dataset like `auto-mpg.csv`)
+2. Review the preview and pick the column you want to predict
+3. Confirm or override the detected problem type
+4. Drop any text columns that are just names or IDs (not useful patterns)
+5. Click **Run AutoML** and wait for the leaderboard
+6. Scroll down, fill in the prediction form, and click **Predict**
+
+## Example result
+
+Using the classic [auto-mpg dataset](https://archive.ics.uci.edu/dataset/9/auto+mpg) (predicting fuel efficiency from car specs), the best model found was a **Gradient Boosting Regressor** with an R² of **0.84** and a mean absolute error of about **2.3 mpg**.
+
+## Limitations
+
+- This is a scoped-down, accessible version of AutoML — not a novel research contribution. The value is in usability, not new algorithms.
+- Predictions are approximations, not exact matches — expect some margin of error, reported transparently via the leaderboard metrics (MAE, R², etc.)
+- Works best on small-to-medium structured/tabular datasets. Very small datasets (under ~30 rows) may give unreliable results.
+- Free-tier deployment (Streamlit Community Cloud) has limited memory, so very large datasets or extremely wide model comparisons may need to be scoped down.
+
+## Roadmap / ideas
+
+- [ ] Support for time-series data
+- [ ] Downloadable prediction reports
+- [ ] Multi-file batch predictions
+- [ ] Better handling of high-cardinality categorical columns
+
+## License
+
+P

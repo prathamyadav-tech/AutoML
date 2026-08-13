@@ -2,6 +2,16 @@ import streamlit as st
 import pandas as pd
 
 st.title("AutoML — Upload your data")
+with st.sidebar:
+    st.header("How this works")
+    st.write("""
+    1. Upload a CSV file
+    2. Pick the column you want to predict
+    3. We detect if it's a category (classification) or a number (regression)
+    4. We clean your data and train several ML models automatically
+    5. We pick the best one and let you test predictions
+    """)
+    st.caption("No coding or ML knowledge needed.")
 st.write("Upload a CSV file and let the app clean, train, and compare models for you.")
 
 file = st.file_uploader("Upload CSV", type="csv")

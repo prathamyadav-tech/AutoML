@@ -201,8 +201,7 @@ if file:
                     data=df,
                     target=target,
                     session_id=42,
-                    verbose=False,
-                    remove_duplicates=True
+                    verbose=False
                 )
 
                 best_model = compare_models()
